@@ -11,7 +11,7 @@ on:
       - 'develop'
 
 env:
-  BRANCH: ${{ $(echo github.ref_name) }}
+  BRANCH: $(echo ${{ github.ref_name }})
 
 jobs:
   build:
