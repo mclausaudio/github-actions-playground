@@ -11,7 +11,7 @@ on:
       - 'develop'
 
 env:
-  BRANCH: $(echo ${{ github.ref_name }})
+  BRANCH: 'FEAture/BRanch123123'
 
 jobs:
   build:
@@ -25,6 +25,10 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: '14'
+      
+      - name: Sanitize
+        run: |
+          BRANCH=$(echo -n ${{ BRANCH }} | tr "/" "-" | tr "[:upper:]" "[:lower:]")
           
       - name: test
         run: |
