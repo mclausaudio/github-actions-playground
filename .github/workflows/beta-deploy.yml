@@ -28,9 +28,9 @@ jobs:
       
       - name: Sanitize
         run: |
-          BRANCH=$(${{env.BRANCH}} | tr "/" "-" | tr "[:upper:]" "[:lower:]")
-          echo $BRANCH
+          SANITIZED_BRANCH=$(${{env.BRANCH}} | tr "/" "-" | tr "[:upper:]" "[:lower:]")
+          echo $SANITIZED_BRANCH
           
       - name: test
         run: |
-          echo $BRANCH
+          echo $SANITIZED_BRANCH
