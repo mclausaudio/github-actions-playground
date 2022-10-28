@@ -27,10 +27,9 @@ jobs:
           node-version: '14'
       
       - name: Sanitize
+        id: sanitized-branch
         run: |
-          SANITIZED_BRANCH="$(echo "${{env.BRANCH}}" | tr "/" "-" | tr "[:upper:]" "[:lower:]")"
-          echo $SANITIZED_BRANCH
-          
+          echo "SANITIZED_BRANCH="$(echo "${{env.BRANCH}}" | tr "/" "-" | tr "[:upper:]" "[:lower:]")"" >> $GITHUB_OUTPUT          
       - name: test
         run: |
-          echo $SANITIZED_BRANCH
+          echo ${{ steps.sanitized-branch.outputs.SANITIZED_BRANCH}}
